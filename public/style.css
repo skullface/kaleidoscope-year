@@ -1,0 +1,392 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.6;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+:root {
+  --color-bg: rgb(255, 255, 255, 1);
+  --color-fg: rgb(0, 0, 0, 1);
+  --color-gray: rgb(0, 0, 0, 0.33);
+  --color-gray-subtle-inverted: rgb(255, 255, 255, 0.25);
+  --font-sans: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Helvetica Neue', 'Ubuntu', sans-serif;
+  --font-mono: 'Courier Prime', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Helvetica Neue', 'Ubuntu', sans-serif;
+  
+  @media (prefers-color-scheme: dark) {
+    --color-bg: rgb(0, 0, 0, 0.9);
+    --color-fg: rgb(255, 255, 255, 1);
+    --color-gray: rgb(255, 255, 255, 0.33);
+    --color-gray-subtle-inverted: rgb(0, 0, 0, 0.25);
+  }
+}
+
+/* Custom styles */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: var(--font-mono);
+  padding: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  padding: 2rem;
+}
+
+p, ul, div, header, footer, section {
+  max-width: 70ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-sans);
+}
+
+header {
+  width: 100%;
+}
+
+.title {
+  text-transform: lowercase;
+  font-family: var(--font-mono);
+  font-weight: normal;
+}
+
+.kaleidoscope {
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-weight: bold;
+  display: block;
+  line-height: 0.9;
+  margin-top: -0.925rem;
+  margin-bottom: -0.925rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  display: block;
+  line-height: 1.1;
+}
+
+.subtitle:before,
+section:before,
+footer:before  {
+  content: '——';
+  display: block;
+  color: var(--color-gray);
+}
+
+.details {
+  display: flex;
+  gap: 1rem;
+}
+
+i {
+  width: 3rem;
+  height: 3rem;
+  font-style: normal;
+  flex-shrink: 0;
+  border: solid 1px var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+a {
+  color: inherit;
+}
+
+.subheading {
+  display: block;
+  font-weight: bold;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+p + ul,
+h2 + p,
+h2 + ul,
+p + h2,
+ul + h2,
+ul + p,
+p + p {
+  margin-top: 1rem;
+}
+
+a,
+a::after,
+button {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+main a[href*="//"]::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 0.25rem;
+  opacity: 0.5;
+  @media (prefers-color-scheme: dark) {
+    filter: invert(1);
+  }
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none'%3E%3Cpath stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' d='m5 1h-2c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-2m0-3.5v-4.5h-4.5m-3.4 7.9 7.9-7.9'/%3E%3C/svg%3E");
+}
+
+main a[href*="//"]:hover::after,
+.links span:hover svg,
+.links a:hover svg {
+  opacity: 1;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: bold;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.9;
+}
+
+.button.rsvp-button {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.button.checkout-button {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+u {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.hosted-by {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.links {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.links svg {
+  flex-shrink: 0;
+  opacity: 0.66;
+  cursor: pointer;
+}
+
+.copy-button {
+  position: relative;
+  top: -1px;
+  color: var(--color-fg);
+}
+
+b,
+.subheading {
+  font-family: var(--font-sans);
+}
+
+.benefits {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.benefits li::marker {
+  content: "♥ ";
+  color: var(--color-gray);
+}
+
+.copy-element {
+  position: relative;
+}
+
+.copy-button {
+  display: inline-flex;
+  background: transparent;
+  border: 0;
+}
+
+.copy-feedback {
+  display: none; 
+  position: absolute; 
+  top: -2.25rem; 
+  padding: 0.5rem; 
+  border-radius: 0.25rem; 
+  font-family: var(--font-sans);
+  line-height: 1; 
+  color: var(--color-bg);
+  background-color: var(--color-fg);
+  white-space: nowrap; 
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms; 
+  opacity: 0;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  left: 0.25rem;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(0, 0, 0, 0.66);
+  }
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  transform: translateY(-2rem);
+  transition: transform 0.3s ease;
+  box-shadow: 0 26px 58px 0 rgba(0, 0, 0, 0.22), 0 5px 14px 0 rgba(0, 0, 0, 0.18);
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  opacity: 0.5;
+  color: var(--color-bg);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.form-container {
+  margin-top: 1rem;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+label {
+ opacity: 0.75;
+}
+
+input[type="text"] {
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+  background: transparent;
+  color: var(--color-bg);
+  border: solid 1px var(--color-gray-subtle-inverted);
+  border-radius: 4px;
+  padding: 3px 6px;
+  width: 100%;
+}
