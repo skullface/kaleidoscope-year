@@ -375,3 +375,11 @@ input[type="text"] {
   padding: 3px 6px;
   width: 100%;
 }
+
+a:focus,
+button:focus,
+.button:focus,
+input[type="text"]:focus {
+  outline: 0;
+  border: solid 2px: #fb6b9d;
+}
