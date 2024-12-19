@@ -26,12 +26,64 @@
     </header>
     <main>
       <p>
-        Thank you for registering for the event! Looking forward to <em>looking forward</em> with you at The CoLab Lounge in Lakewood on January 14, 2025.
+        Thank you for registering for the event! Looking forward to <em>looking forward</em> with you at <a href="https://maps.app.goo.gl/tkRRJbUaHLGMdgky5">The Lounge</a> in Lakewood, Ohio on January 14, 2025 at 6:30 PM.
+      </p>
+      
+      <ul>
+        <li>
+          <a href="#" id="google-calendar" target="_blank">
+            Add to Google Calendar
+          </a>
+        </li>
+        <li>
+          <a href="#" id="apple-calendar" download="kaleidoscopeyear.ics">
+            Add to Apple Calendar
+          </a>
+        </li>
+      </ul>
+      
+      <p>
+        If you have any questions at all, please contact Skully via <a href="https://instagram.com/skvllface">IG DM (@skvllface)</a> or email: <a href="mailto:meow@skullface.me">meow@skullface.me</a>.
       </p>
       
       <p>
-        If you have any questions at all, please contact Skully via <b><a href="https://instagram.com/skvllface">IG DM (@skvllface)</a></b> or email: <a href="mailto:meow@skullface.me"><b>meow@skullface.me</b></a>.
+        <a href="/">&larr; Back to the event page</a>
       </p>
     </main>
+    
+    <script>
+      const event = {
+        title: "Kaleidoscope Year: Goal-setting Workshop ♡",
+        startTime: "20250114T233000Z", // 6:30 PM EST on Jan 14, 2025
+        endTime: "20250115T010000Z",   // 8:00 PM EST on Jan 14, 2025
+        location: "The Lounge, 17008 Madison Ave. Lakewood, OH 44107",
+        description: "Reflect and goal-set individually, together. We'll provide the framework for whatever you want to accomplish in 2025. More details, including parking, at https://kaleidoscopeyear.com ♡"
+      };
+
+      const iCalContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        `DTSTART:${event.startTime}`,
+        `DTEND:${event.endTime}`,
+        `SUMMARY:${event.title}`,
+        `LOCATION:${event.location}`,
+        `DESCRIPTION:${event.description}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      // Use Windows-1252 encoding which is more widely supported for ICS files
+      const icsUrl = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(iCalContent);
+
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE` + 
+        `&text=${encodeURIComponent(event.title)}` +
+        `&dates=${event.startTime}/${event.endTime}` +
+        `&location=${encodeURIComponent(event.location)}` +
+        `&details=${encodeURIComponent(event.description)}`;
+
+      document.getElementById('apple-calendar').href = icsUrl;
+      document.getElementById('google-calendar').href = googleUrl;
+    </script>
   </body>
 </html>
