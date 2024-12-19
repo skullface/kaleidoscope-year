@@ -380,6 +380,6 @@ a:focus,
 button:focus,
 .button:focus,
 input[type="text"]:focus {
-  outline: 0;
-  border: solid 2px: #fb6b9d;
+  outline: solid 2px #fb6b9d;
+  border-radius: 4px;
 }
